@@ -1,4 +1,4 @@
-package com.florespck.floresdm;
+package com.florescon.floresdm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

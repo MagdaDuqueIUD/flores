@@ -5,6 +5,26 @@
             "name": "Spring Boot-FloresdmApplication<floresdm>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
+            "mainClass": "com.florescon.floresdm.FloresdmApplication",
+            "projectName": "floresdm",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-FloresdmApplication<floresdm>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.florescon.floresdm.FloresdmApplication",
+            "projectName": "floresdm",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-FloresdmApplication<floresdm>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
             "mainClass": "com.florespck.floresdm.FloresdmApplication",
             "projectName": "floresdm",
             "args": "",

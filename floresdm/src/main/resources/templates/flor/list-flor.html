@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flores</title>
+</head>
+<body>
+<h1>Flores Disponibles</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Color</th>
+        <th>Variedad</th>
+        <th>Cantidad</th>
+        <th>Precio Venta</th>
+    </tr>
+    <tr th:each="flor : ${flores}">
+        <td th:text="${flor.id}">1</td>
+        <td th:text="${flor.tipo}">Rosa</td>
+        <td th:text="${flor.color}">Rojo</td>
+        <td th:text="${flor.variedad}">Silvestre</td>
+        <td th:text="${flor.cantidadDisponible}">20</td>
+        <td th:text="${flor.precioVenta}">15.50</td>
+    </tr>
+</table>
+<a href="/flores/nuevo">Agregar nueva flor</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Cliente</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+
+<h1>Nuevo Cliente</h1>
+
+<form action="/clientes/guardar" method="post">
+    <span>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" th:value="${cliente != null} ? ${cliente.nombre} : ''" required><br>
+    </span>
+    <span>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" th:value="${cliente != null} ? ${cliente.direccion} : ''" required><br>
+    </span>
+    <span>
+        <label for="contacto">Contacto:</label>
+        <input type="text" id="contacto" name="contacto" th:value="${cliente != null} ? ${cliente.contacto} : ''" required><br>
+    </span>
+    <span>
+    <input type="hidden" name="id" th:value="${cliente != null} ? ${cliente.id} : ''">
+    <button type="submit">Guardar</button>
+    </span>
+</form>
+
+<a href="/clientes">Volver al listado</a>
+
+</body>
+</html>

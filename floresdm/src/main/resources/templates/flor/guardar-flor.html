@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor Guardada</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<h1>Flor Guardada con Éxito</h1>
+<p th:text="'La flor con ID ' + ${flor.id} + ' ha sido guardada correctamente.'"></p>
+
+<a href="/flores">Volver al listado de flores</a>
+
+</body>
+</html>

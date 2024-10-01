@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Flor</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+
+<h1>Nueva Flor</h1>
+
+<form action="/flores/guardar" method="post">
+    <span>
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" th:value="${flor != null} ? ${flor.tipo} : ''" required><br>
+    </span>
+    <span>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" th:value="${flor != null} ? ${flor.color} : ''" required><br>
+    </span>
+    <span>
+        <label for="variedad">Variedad:</label>
+        <input type="text" id="variedad" name="variedad" th:value="${flor != null} ? ${flor.variedad} : ''" required><br>
+    </span>
+    <span>
+        <label for="cantidadDisponible">Cantidad:</label>
+        <input type="number" id="cantidadDisponible" name="cantidadDisponible" th:value="${flor != null} ? ${flor.cantidadDisponible} : ''" required><br>
+    </span>
+    <span>
+        <label for="precioVenta">Precio Venta:</label>
+        <input type="text" id="precioVenta" name="precioVenta" th:value="${flor != null} ? ${flor.precioVenta} : ''" required><br>
+    </span>
+    <span>
+    <input type="hidden" name="id" th:value="${flor != null} ? ${flor.id} : ''">
+    <button type="submit">Guardar</button>
+    </span>
+</form>
+
+<a href="/flores">Volver al listado</a>
+
+</body>
+</html>

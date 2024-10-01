@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Pedido</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Crear Pedido</h1>
+
+        <form th:action="@{/pedidos/guardar}" method="post">
+            <!-- Sección: Datos del Pedido -->
+            <fieldset class="border p-4 mb-4">
+                <legend class="w-auto px-2">Datos del Pedido</legend>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fechaRealizacion">Fecha de Realización:</label>
+                        <input type="date" class="form-control" id="fechaRealizacion" name="fechaRealizacion" required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="fechaEntrega">Fecha de Entrega:</label>
+                        <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="tipoArreglo">Tipo de Arreglo:</label>
+                        <input type="text" class="form-control" id="tipoArreglo" name="tipoArreglo" required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="ocasion">Ocasión:</label>
+                        <input type="text" class="form-control" id="ocasion" name="ocasion" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="presupuesto">Presupuesto:</label>
+                        <input type="number" class="form-control" id="presupuesto" name="presupuesto" required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="cliente">Cliente:</label>
+                        <select class="form-control" id="cliente" name="cliente.id" required>
+                            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sección: Detalles del Pedido -->
+            <fieldset class="border p-4 mb-4">
+                <legend class="w-auto px-2">Detalles del Pedido</legend>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="font-size: 1rem;">Flor</th>
+                            <th style="font-size: 1rem;">Cantidad</th>
+                            <th style="font-size: 1rem;">Precio Unitario</th>
+                            <th style="font-size: 1rem;">Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="detalle-pedido-table">
+                        <tr class="detalle-row">
+                            <td style="width: 30%;">
+                                <select class="form-control flor-select" style="font-size: 0.8rem;" name="detalles[0].flor.id" onchange="actualizarPrecio(this)" required>
+                                    <option th:each="flor : ${flores}" th:value="${flor.id}" th:data-precio="${flor.precioVenta}" th:text="${flor.tipo}"></option>
+                                </select>
+                            </td>
+                            <td style="width: 5%;"><input type="number" style="font-size: 0.8rem;" class="form-control cantidad" name="detalles[0].cantidadSolicitada" onchange="calcularSubtotal(this)" min="1" required></td>
+                            <td style="width: 25%;"><input type="number" style="font-size: 0.8rem;" class="form-control precio-venta" name="detalles[0].precioVenta" readonly></td>
+                            <td style="width: 25%;"><input type="number" style="font-size: 0.8rem;" class="form-control subtotal-input" name="detalles[0].subtotal" readonly></td>
+                            <td style="width: 5%;"><button type="button" class="btn btn-primary btn-remove-row" onclick="eliminarDetalle(this)">-</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn btn-primary" onclick="agregarDetalle()">Agregar Detalle</button>
+            </fieldset>
+
+            <!-- Sección: Total del Pedido -->
+            <fieldset class="border p-4 mb-4">
+                <legend class="w-auto px-2">Total del Pedido</legend>
+
+                <div class="form-group">
+                    <label for="total">Total del Pedido:</label>
+                    <input type="number" class="form-control" id="total" name="total" readonly>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+        </form>
+    </div>
+
+
+    <script>
+
+function actualizarPrecio(selectElement) {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const precio = selectedOption.getAttribute('data-precio');
+        
+        const row = selectElement.closest('tr');
+        const precioInput = row.querySelector('.precio-venta');
+        
+        if (precio && precioInput) {
+            precioInput.value = parseFloat(precio).toFixed(2);
+        }
+
+        calcularSubtotal(row.querySelector('.cantidad')); // Recalcular subtotal si la cantidad ya está presente
+
+    }
+
+
+    // Calcula el subtotal por cada fila de detalle de pedido
+    function calcularSubtotal(cantidadInput) {
+
+        const row = cantidadInput.closest('tr');
+        const precioInput = row.querySelector('.precio-venta').value;
+        const cantidad = cantidadInput.value;
+        const subtotal = parseFloat(precioInput) * parseFloat(cantidad || 0);
+        //alert("¡Atención! Esto es calcularSubtotal."+subtotal);
+        row.querySelector('.subtotal-input').value = subtotal.toFixed(2);
+
+        calcularTotal(); // Actualizar el total del pedido
+
+
+    }
+
+    // Calcula el total del pedido sumando todos los subtotales
+    function calcularTotal() {
+        let total = 0;
+        document.querySelectorAll('.subtotal-input').forEach(function (subtotalInput) {
+            total += parseFloat(subtotalInput.value || 0);
+        });
+        document.getElementById('total').value = total.toFixed(2);
+    } 
+
+    let detalleIndex = 1; // Mantén un índice global para los detalles
+
+    // Agrega una nueva fila de detalle de pedido
+    function agregarDetalle() {
+        const tableBody = document.getElementById('detalle-pedido-table');
+        const rowCount = tableBody.querySelectorAll('tr').length;
+
+        const newRow = tableBody.querySelector('.detalle-row').cloneNode(true); // Clonamos la primera fila
+
+        // Limpiar los valores de la nueva fila
+        newRow.querySelector('.flor-select').name = `detalles[${detalleIndex}].flor.id`;
+        newRow.querySelector('.flor-select').value = '';  // Reiniciar la flor seleccionada
+
+        newRow.querySelector('.cantidad').name = `detalles[${detalleIndex}].cantidadSolicitada`;
+        newRow.querySelector('.cantidad').value = '';     // Reiniciar la cantidad
+
+        newRow.querySelector('.precio-venta').name = `detalles[${detalleIndex}].precioVenta`;
+        newRow.querySelector('.precio-venta').value = ''; // Reiniciar el precio
+
+        newRow.querySelector('.subtotal-input').name = `detalles[${detalleIndex}].subtotal`;
+        newRow.querySelector('.subtotal-input').value = '';     // Reiniciar el subtotal
+
+        tableBody.appendChild(newRow); // Añadir la nueva fila a la tabla
+        detalleIndex++;
+    }
+
+    // Elimina la fila del detalle
+    function eliminarDetalle(button) {
+        const row = button.closest('tr');
+        row.remove();
+        calcularTotal(); // Recalcular el total después de eliminar una fila
+    }
+
+
+
+
+
+    </script>
+</body>
+</html>

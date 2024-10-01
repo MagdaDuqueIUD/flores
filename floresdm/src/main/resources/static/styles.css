@@ -1,0 +1,292 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8abc0 !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #ffffff !important;
+    margin-top: 30px;
+    font-size: 2.5em;
+    font-style: italic;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.2em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #eba3bd;
+    color: #000000;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td {
+    color: #333;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ec76a2;
+    color: rgb(133, 40, 103);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+a:hover {
+    background-color: #e8b8d2;
+}
+
+button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #eba3bd;
+    color: rgb(67, 18, 51);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+button:hover {
+    background-color: #e8b8d2;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  span {
+    margin-bottom: 20px;
+  }
+
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+nav ul li a:hover {
+    color: #db82bd;
+}
+
+
+/* Estilos para centrar el menú y agregar fondo azul */
+nav {
+    background-color: #933c73; /* Fondo azul */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Eliminar el estilo predeterminado de la lista */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+/* Estilos para centrar horizontalmente */
+ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+/* Estilos para los enlaces */
+ul li a {
+    text-decoration: none;
+    color: rgb(79, 35, 62); /* Color del texto blanco */
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover para resaltar las opciones presionables */
+ul li a:hover {
+    background-color: #992b6b; /* Fondo más oscuro al hacer hover */
+    color: #360e24;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dc92b0;
+}
+header {
+    background-color: #e8abc0;
+    color: rgb(174, 67, 151);
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fbf5f5;
+    font-weight: bold;
+}
+section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h1, h2 {
+    color: #ffffff;
+}
+h3 {
+    color: #ffffff;
+}
+p {
+    color: #ee63bb;
+}
+label {
+    color: #2f0c21;
+}
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.product {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+}
+.product img {
+    width: 100%;
+    height: auto;
+}
+footer {
+    background-color: #333;
+    color: rgb(226, 95, 95);
+    padding: 10px;
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+form input, form textarea {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #2d0a22;
+}
+form input[type="submit"] {
+    background-color: #892e62;
+    color: rgb(65, 7, 44);
+    border: none;
+    cursor: pointer;
+}
+
+
+
+        /* Centrar el menú y agregar fondo azul */
+        nav {
+            background-color: #b85a92; /* Fondo azul */
+            padding: 20px;
+        }
+
+        /* Eliminar el estilo predeterminado de la lista */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Estilos para los botones flotantes */
+        ul li {
+            margin: 0 15px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: rgb(58, 15, 38);
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #830d67;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto hover: sensación de flotación */
+        ul li a:hover {
+            background-color: #853067; /* Cambiar a un azul más oscuro */
+            transform: translateY(-5px); /* Levantar el botón hacia arriba */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+        }
+
+
+        /* Cambiar color de fondo y texto del botón primario */
+.btn.btn-primary {
+    background-color: #69415f; /* Cambia este color por el que prefieras */
+    border-color: #9e316d; /* Cambia el color del borde también */
+    color: white; /* Cambia el color del texto */
+}
+
+/* Cambiar el color del botón cuando se pasa el cursor por encima */
+.btn.btn-primary:hover {
+    background-color: #381d31; /* Color al pasar el ratón */
+    border-color: #70405e; /* Color del borde al pasar el ratón */
+}
+
+/* Cambiar color de fondo y texto del botón primario */
+.btn btn-success {
+    background-color: #69415f; /* Cambia este color por el que prefieras */
+    border-color: #9e316d; /* Cambia el color del borde también */
+    color: white; /* Cambia el color del texto */
+}
+
+

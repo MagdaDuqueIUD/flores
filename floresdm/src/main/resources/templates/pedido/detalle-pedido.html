@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Pedido</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1>Detalles del Pedido #<span th:text="${pedido.id}"></span></h1>
+
+<p>Cliente: <span th:text="${pedido.cliente.nombre}"></span></p>
+<p>Fecha Realización: <span th:text="${pedido.fechaRealizacion}"></span></p>
+<p>Fecha Entrega: <span th:text="${pedido.fechaEntrega}"></span></p>
+<p>Estado: <span th:text="${pedido.estado}"></span></p>
+
+<h2>Detalles del Pedido</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Flor</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="detalle : ${pedido.detalles}">
+            <td th:text="${detalle.flor.tipo}"></td>
+            <td th:text="${detalle.cantidadSolicitada}"></td>
+            <td th:text="${detalle.subtotal}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="/pedidos">Volver a la lista de pedidos</a>
+
+</body>
+</html>

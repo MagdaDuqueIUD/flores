@@ -5,93 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ROSETTA flores frescas siempre.">
     <title>ROSETTA</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #dc92b0;
-        }
-        header {
-            background-color: #e8abc0;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            margin: 20px 0;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #fbf5f5;
-            font-weight: bold;
-        }
-        section {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1, h2 {
-            color: #efe9e9;
-        }
-        h3 {
-            color: #efe9e9;
-        }
-        p {
-            color: #efe9e9;
-        }
-        label {
-            color: #efe9e9;
-        }
-        .products {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .product {
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            text-align: center;
-        }
-        .product img {
-            width: 100%;
-            height: auto;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        form input, form textarea {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-        }
-        form input[type="submit"] {
-            background-color: #892e62;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <h1>ROSETTA</h1>
-        <p>La mejor selección de flores frescas para cada ocasión</p>
+        <p style="font-size:large;">La mejor selección de flores frescas para cada ocasión</p>
     </header>
+
+
+
+    <!-- Incluir el menú -->
+    <!-- <div th:replace="fragments/menu :: menu"></div>-->
+     <div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Página Principal</a></li>
+            <li><a th:href="@{/flores}">Flores</a></li>
+            <li><a th:href="@{/clientes}">Clientes</a></li>
+            <li><a th:href="@{/pedidos}">Pedidos</a></li>
+        </ul>
+    </nav>
+    </div>
+
+
+    <h1>Bienvenido a la Floristería</h1>
+    <p style="font-size:large;">Aquí puedes gestionar las flores, clientes y pedidos de manera eficiente.</p>
 
     <nav>
         <a href="#productos">Productos</a>
@@ -119,7 +60,7 @@
 
     <section id="nosotros">
         <h2>Sobre Nosotros</h2>
-        <p>En ROSETTA, nos apasionan las flores. Ofrecemos una gran variedad de arreglos florales frescos, perfectos para cualquier ocasión. Con más de 10 años de experiencia, estamos comprometidos a brindar a nuestros clientes la mejor calidad y servicio.</p>
+        <p style="font-size:large;">En ROSETTA, nos apasionan las flores. Ofrecemos una gran variedad de arreglos florales frescos, perfectos para cualquier ocasión. Con más de 10 años de experiencia, estamos comprometidos a brindar a nuestros clientes la mejor calidad y servicio.</p>
     </section>
 
     <section id="contacto">

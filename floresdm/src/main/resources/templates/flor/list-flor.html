@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Flores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Disponibles</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+
 <h1>Flores Disponibles</h1>
+
 <table>
     <tr>
         <th>ID</th>
@@ -13,6 +18,7 @@
         <th>Variedad</th>
         <th>Cantidad</th>
         <th>Precio Venta</th>
+        <th>Precio Compra</th>
     </tr>
     <tr th:each="flor : ${flores}">
         <td th:text="${flor.id}">1</td>
@@ -21,8 +27,21 @@
         <td th:text="${flor.variedad}">Silvestre</td>
         <td th:text="${flor.cantidadDisponible}">20</td>
         <td th:text="${flor.precioVenta}">15.50</td>
+        <td th:text="${flor.precioCompra}">15.50</td>
+        <td>
+            <!-- Botón para editar -->
+            <a th:href="@{'/flores/editar/' + ${flor.id}}">Editar</a>
+            
+            <!-- Botón para borrar -->
+            <a th:href="@{'/flores/borrar/' + ${flor.id}}" 
+               onclick="return confirm('¿Estás seguro de que deseas borrar esta flor?');">Borrar</a>
+        </td>
+
+
     </tr>
 </table>
+
 <a href="/flores/nuevo">Agregar nueva flor</a>
+
 </body>
 </html>
